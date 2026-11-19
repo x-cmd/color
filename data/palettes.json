@@ -1,0 +1,231 @@
+{
+  "families": {
+    "macaron": {
+      "name": { "en": "Macaron", "cn": "马卡龙" },
+      "summary": {
+        "en": "Pastel candy colours: high lightness, clear but never harsh saturation, and a bias toward pink, mint and cream. Reads as sweet, soft and approachable.",
+        "cn": "粉彩糖果色：明度高、饱和度清亮而不刺眼，色相偏向粉、薄荷与奶油。读起来甜、软、亲近。"
+      },
+      "mood": { "en": "Sweet, soft, playful", "cn": "甜、软、俏皮" },
+      "bestFor": {
+        "en": "Consumer apps, food and drink, children's products, seasonal campaigns, onboarding and empty states",
+        "cn": "消费级应用、餐饮、童品、季节性活动、引导页与空状态"
+      },
+      "avoidFor": {
+        "en": "Financial dashboards, dense data tables, legal or medical information, anything where numbers must be read fast",
+        "cn": "金融看板、密集数据表、法律或医疗信息，以及任何要求快速读数的场景"
+      },
+      "band": {
+        "lightness": [0.79, 0.95],
+        "chroma": [0.06, 0.1],
+        "hue": { "en": "pink, mint, cream, sky — warm and cool in balance", "cn": "粉、薄荷、奶油、天蓝——冷暖相济" }
+      },
+      "colors": [
+        { "id": "cream-paper", "name": { "en": "Cream Paper", "cn": "奶油纸" }, "hex": "#FFFDFB", "role": "surface" },
+        { "id": "strawberry-milk", "name": { "en": "Strawberry Milk", "cn": "草莓牛奶" }, "hex": "#F8C8DC", "role": "base" },
+        { "id": "mint", "name": { "en": "Mint", "cn": "薄荷" }, "hex": "#A8E6CF", "role": "base" },
+        { "id": "lavender", "name": { "en": "Lavender", "cn": "薰衣草" }, "hex": "#C3B1E1", "role": "base" },
+        { "id": "lemon", "name": { "en": "Lemon", "cn": "柠檬" }, "hex": "#FFF1A8", "role": "base" },
+        { "id": "peach", "name": { "en": "Peach", "cn": "蜜桃" }, "hex": "#FFD3B6", "role": "base" },
+        { "id": "sky", "name": { "en": "Sky", "cn": "天空" }, "hex": "#AED6F1", "role": "base" },
+        { "id": "coral", "name": { "en": "Coral", "cn": "珊瑚" }, "hex": "#FFAAA5", "role": "accent" },
+        { "id": "ink-plum", "name": { "en": "Ink Plum", "cn": "墨梅" }, "hex": "#4A4045", "role": "ink" },
+        { "id": "dusty-rose", "name": { "en": "Dusty Rose", "cn": "灰玫瑰" }, "hex": "#8C7F84", "role": "muted" }
+      ]
+    },
+
+    "morandi": {
+      "name": { "en": "Morandi", "cn": "莫兰迪" },
+      "summary": {
+        "en": "Grey-toned muted colours: every hue is pulled toward neutral, so nothing shouts. Reads as quiet, studied and tactile.",
+        "cn": "带灰的克制色：每个色相都被拉向中性，谁也不出声。读起来安静、耐看、有手感。"
+      },
+      "mood": { "en": "Quiet, studied, tactile", "cn": "安静、耐看、有质感" },
+      "bestFor": {
+        "en": "Editorial layouts, gallery and portfolio sites, lifestyle brands, subtle dashboards, long-form reading",
+        "cn": "编辑式排版、作品集与画廊、生活方式品牌、克制的看板、长文阅读"
+      },
+      "avoidFor": {
+        "en": "Interfaces that need one obvious action, or audiences that expect vivid energy",
+        "cn": "需要唯一显性动作的界面，或期待鲜艳活力的受众"
+      },
+      "band": {
+        "lightness": [0.59, 0.9],
+        "chroma": [0.01, 0.06],
+        "hue": { "en": "sage, clay, mist blue, dust — all mixed with grey", "cn": "鼠尾草、陶土、雾蓝、藕荷——都掺了灰" }
+      },
+      "colors": [
+        { "id": "paper", "name": { "en": "Paper", "cn": "宣纸" }, "hex": "#F5F2ED", "role": "surface" },
+        { "id": "sage", "name": { "en": "Sage", "cn": "鼠尾草" }, "hex": "#A3B18A", "role": "base" },
+        { "id": "clay", "name": { "en": "Clay", "cn": "陶土" }, "hex": "#DAD7CD", "role": "base" },
+        { "id": "mist-blue", "name": { "en": "Mist Blue", "cn": "雾蓝" }, "hex": "#B0B7C6", "role": "base" },
+        { "id": "taupe", "name": { "en": "Taupe", "cn": "灰褐" }, "hex": "#C4AFA1", "role": "base" },
+        { "id": "mauve", "name": { "en": "Dusty Mauve", "cn": "灰藕荷" }, "hex": "#C8B6C6", "role": "base" },
+        { "id": "oat", "name": { "en": "Oat", "cn": "燕麦" }, "hex": "#E3DDD3", "role": "base" },
+        { "id": "umber", "name": { "en": "Umber", "cn": "深陶" }, "hex": "#8C7A6E", "role": "accent" },
+        { "id": "ink", "name": { "en": "Ink", "cn": "墨" }, "hex": "#3F3A38", "role": "ink" },
+        { "id": "stone", "name": { "en": "Stone", "cn": "石" }, "hex": "#8A817A", "role": "muted" }
+      ]
+    },
+
+    "swiss-neutral": {
+      "name": { "en": "Swiss Neutral", "cn": "瑞士中立" },
+      "summary": {
+        "en": "A near-monochrome system: paper, black, a ladder of greys, and exactly one signal colour. The layout does the work, not the palette.",
+        "cn": "近乎单色的系统：纸、白黑、一条灰阶，再加恰好一个信号色。做功的是版式，不是颜色。"
+      },
+      "mood": { "en": "Exact, quiet, rational", "cn": "精确、克制、理性" },
+      "bestFor": {
+        "en": "Editorial and publishing, documentation, architecture and design studios, data reporting, ticketing and wayfinding",
+        "cn": "出版与编辑、文档、建筑与设计事务所、数据报告、票务与导视"
+      },
+      "avoidFor": {
+        "en": "Brands that need warmth or playfulness, and products aimed at children",
+        "cn": "需要温度或趣味的品牌，以及面向儿童的产品"
+      },
+      "band": {
+        "lightness": [0.32, 0.97],
+        "chroma": [0.0, 0.26],
+        "hue": { "en": "achromatic by design — the one chromatic member is the signal colour", "cn": "刻意无色相——唯一有彩色的成员是信号色" }
+      },
+      "colors": [
+        { "id": "paper", "name": { "en": "Paper", "cn": "纸" }, "hex": "#FFFFFF", "role": "surface" },
+        { "id": "panel", "name": { "en": "Panel", "cn": "面板" }, "hex": "#F5F5F5", "role": "base" },
+        { "id": "rule", "name": { "en": "Rule", "cn": "分隔线" }, "hex": "#E0E0E0", "role": "base" },
+        { "id": "secondary", "name": { "en": "Secondary", "cn": "次级" }, "hex": "#9B9B9B", "role": "muted" },
+        { "id": "deep", "name": { "en": "Deep", "cn": "深灰" }, "hex": "#333333", "role": "base" },
+        { "id": "signal-red", "name": { "en": "Signal Red", "cn": "信号红" }, "hex": "#FF0000", "role": "accent" },
+        { "id": "black", "name": { "en": "Black", "cn": "黑" }, "hex": "#000000", "role": "ink" }
+      ]
+    },
+
+    "nordic": {
+      "name": { "en": "Nordic", "cn": "北欧" },
+      "summary": {
+        "en": "Cool, pale and airy: near-white surfaces, glacial blues, and a few warm accents used sparingly to keep it from going cold.",
+        "cn": "冷、浅、通透：近白的底、冰川般的蓝，再点缀少量暖色，免得发冷。"
+      },
+      "mood": { "en": "Calm, clean, airy", "cn": "平静、干净、通透" },
+      "bestFor": {
+        "en": "SaaS and developer tools, healthcare, travel and hospitality, portfolios, documentation",
+        "cn": "SaaS 与开发者工具、医疗、旅行与酒店、作品集、文档站"
+      },
+      "avoidFor": {
+        "en": "Brands that need warmth or urgency, and dense dashboards where pale colours wash out",
+        "cn": "需要温度或紧迫感的品牌，以及浅色会糊掉的密集看板"
+      },
+      "band": {
+        "lightness": [0.63, 0.94],
+        "chroma": [0.01, 0.12],
+        "hue": { "en": "blue-grey and spruce, with terracotta and mustard as warm counterweights", "cn": "蓝灰与云杉，配陶土橘与芥末作暖色平衡" }
+      },
+      "colors": [
+        { "id": "snow", "name": { "en": "Snow", "cn": "雪" }, "hex": "#F7F9FA", "role": "surface" },
+        { "id": "frost", "name": { "en": "Frost", "cn": "霜" }, "hex": "#E8EDF0", "role": "base" },
+        { "id": "glacier", "name": { "en": "Glacier", "cn": "冰川" }, "hex": "#C9D6DE", "role": "base" },
+        { "id": "fjord", "name": { "en": "Fjord", "cn": "峡湾" }, "hex": "#9FB6C4", "role": "base" },
+        { "id": "deep-fjord", "name": { "en": "Deep Fjord", "cn": "深峡湾" }, "hex": "#6B8FA3", "role": "base" },
+        { "id": "terracotta", "name": { "en": "Terracotta", "cn": "陶土橘" }, "hex": "#D9A38F", "role": "accent" },
+        { "id": "eucalyptus", "name": { "en": "Eucalyptus", "cn": "桉木" }, "hex": "#A9BC8F", "role": "accent" },
+        { "id": "mustard", "name": { "en": "Mustard", "cn": "芥末" }, "hex": "#E3C46A", "role": "accent" },
+        { "id": "ink", "name": { "en": "Ink", "cn": "墨" }, "hex": "#2E3A40", "role": "ink" }
+      ]
+    },
+
+    "wabi-sabi": {
+      "name": { "en": "Wabi-sabi", "cn": "侘寂" },
+      "summary": {
+        "en": "Earth-derived colours with visible texture: lime plaster, sand, clay, moss and bark. Low chroma, warm bias, nothing polished.",
+        "cn": "取自泥土的颜色，带着材质的纹理：石灰墙、沙、陶土、苔与树皮。低彩度、偏暖、不抛光。"
+      },
+      "mood": { "en": "Earthy, honest, weathered", "cn": "质朴、诚实、有岁月感" },
+      "bestFor": {
+        "en": "Furniture and interiors, craft and handmade goods, food brands, wellness, slow-living publications",
+        "cn": "家具与室内、手作与手工品、食品品牌、健康生活、慢生活刊物"
+      },
+      "avoidFor": {
+        "en": "Products that need to look new, technical, or fast-moving",
+        "cn": "需要显得崭新、技术或高速的产品"
+      },
+      "band": {
+        "lightness": [0.45, 0.8],
+        "chroma": [0.03, 0.05],
+        "hue": { "en": "warm earth — clay, bark, moss, forest", "cn": "暖土色——陶土、树皮、苔、林" }
+      },
+      "colors": [
+        { "id": "lime-plaster", "name": { "en": "Lime Plaster", "cn": "石灰墙" }, "hex": "#E8E0D5", "role": "surface" },
+        { "id": "sand", "name": { "en": "Sand", "cn": "沙" }, "hex": "#C9BBA6", "role": "base" },
+        { "id": "clay", "name": { "en": "Clay", "cn": "陶土" }, "hex": "#A08C7D", "role": "base" },
+        { "id": "bark", "name": { "en": "Bark", "cn": "树皮" }, "hex": "#8C6D5B", "role": "accent" },
+        { "id": "moss", "name": { "en": "Moss", "cn": "苔" }, "hex": "#7D8471", "role": "accent" },
+        { "id": "forest", "name": { "en": "Forest", "cn": "林" }, "hex": "#4A5A45", "role": "accent" },
+        { "id": "ink", "name": { "en": "Ink", "cn": "墨" }, "hex": "#3B342E", "role": "ink" }
+      ]
+    },
+
+    "memphis": {
+      "name": { "en": "Memphis", "cn": "孟菲斯" },
+      "summary": {
+        "en": "High-chroma primaries and hot pink on black and white, with squiggles, grids and clashing geometry. Loud on purpose.",
+        "cn": "高彩度的原色与亮粉，压在黑白之上，再加波浪线、网格和撞色几何。就是要吵。"
+      },
+      "mood": { "en": "Loud, ironic, playful", "cn": "喧闹、反讽、好玩" },
+      "bestFor": {
+        "en": "Youth brands, events and music, tech that wants to look like a launch, illustration and editorial accents",
+        "cn": "年轻品牌、活动与音乐、想要「刚发布」感的产品、插画与编辑点缀"
+      },
+      "avoidFor": {
+        "en": "Trust-heavy domains such as finance, healthcare, government and enterprise procurement",
+        "cn": "强调可信度的领域：金融、医疗、政务与企业采购"
+      },
+      "band": {
+        "lightness": [0.55, 0.91],
+        "chroma": [0.12, 0.25],
+        "hue": { "en": "pink, orange, yellow, turquoise, blue, violet — deliberately unbalanced", "cn": "粉、橙、黄、青绿、蓝、紫——刻意不均衡" }
+      },
+      "colors": [
+        { "id": "white", "name": { "en": "White", "cn": "白" }, "hex": "#FFFFFF", "role": "surface" },
+        { "id": "yellow", "name": { "en": "Yellow", "cn": "黄" }, "hex": "#FFE14D", "role": "base" },
+        { "id": "orange", "name": { "en": "Orange", "cn": "橙" }, "hex": "#FF9F1C", "role": "base" },
+        { "id": "turquoise", "name": { "en": "Turquoise", "cn": "青绿" }, "hex": "#2EC4B6", "role": "base" },
+        { "id": "blue", "name": { "en": "Blue", "cn": "蓝" }, "hex": "#3A86FF", "role": "base" },
+        { "id": "pink", "name": { "en": "Hot Pink", "cn": "亮粉" }, "hex": "#FF4B8B", "role": "accent" },
+        { "id": "violet", "name": { "en": "Violet", "cn": "紫" }, "hex": "#8338EC", "role": "accent" },
+        { "id": "black", "name": { "en": "Black", "cn": "黑" }, "hex": "#1A1A1A", "role": "ink" }
+      ]
+    },
+
+    "neon": {
+      "name": { "en": "Neon", "cn": "霓虹" },
+      "summary": {
+        "en": "A near-black canvas lit by fluorescent accents: cyan, magenta, acid lime. The colours glow because everything around them stays dark.",
+        "cn": "近黑的底布上点亮荧光强调色：青、品红、荧光酸绿。之所以发光，是因为四周够黑。"
+      },
+      "mood": { "en": "Electric, nocturnal, synthetic", "cn": "带电、夜间、人造" },
+      "bestFor": {
+        "en": "Nightlife, music and gaming, developer tools that want an edge, portfolio and landing pages, terminal-adjacent products",
+        "cn": "夜生活、音乐与游戏、要有锋芒的开发者工具、作品集与落地页、终端类产品"
+      },
+      "avoidFor": {
+        "en": "Reading-heavy content, forms, printing, and anyone who needs daylight clarity",
+        "cn": "长文阅读、表单、打印，以及任何需要日光下清晰度的场景"
+      },
+      "band": {
+        "lightness": [0.21, 0.87],
+        "chroma": [0.02, 0.29],
+        "hue": { "en": "cyan, magenta, acid lime, violet, amber — on a black ground", "cn": "青、品红、荧光绿、紫、琥珀——压黑底" }
+      },
+      "colors": [
+        { "id": "void", "name": { "en": "Void", "cn": "虚" }, "hex": "#05060A", "role": "surface" },
+        { "id": "panel", "name": { "en": "Panel", "cn": "面板" }, "hex": "#131722", "role": "base" },
+        { "id": "cyan", "name": { "en": "Neon Cyan", "cn": "霓虹青" }, "hex": "#00F0FF", "role": "accent" },
+        { "id": "magenta", "name": { "en": "Neon Magenta", "cn": "霓虹品红" }, "hex": "#FF2E88", "role": "accent" },
+        { "id": "lime", "name": { "en": "Acid Lime", "cn": "荧光酸绿" }, "hex": "#39FF14", "role": "accent" },
+        { "id": "violet", "name": { "en": "Neon Violet", "cn": "霓虹紫" }, "hex": "#9B5CFF", "role": "accent" },
+        { "id": "amber", "name": { "en": "Neon Amber", "cn": "霓虹琥珀" }, "hex": "#FFB800", "role": "accent" },
+        { "id": "text", "name": { "en": "Text", "cn": "正文" }, "hex": "#E6EDF3", "role": "ink" },
+        { "id": "muted", "name": { "en": "Muted", "cn": "次要" }, "hex": "#8B98A5", "role": "muted" }
+      ]
+    }
+  }
+}
