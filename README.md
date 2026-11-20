@@ -69,6 +69,30 @@ out-of-date tables):
 node scripts/palette.mjs check
 ```
 
+## Read it online · 在线阅读
+
+The book is published as its own Cloudflare Worker:
+
+- English: <https://x-cmd.com/color/>
+- 中文: <https://www.x-cmd.com/color/cn/>
+
+Every article page carries a language toggle. The same interface rendered in all
+seven families' colours is on the [home page](https://x-cmd.com/color/) — buttons, tags, stat
+cards, chart bars and alerts, generated from each family's own palette.
+
+To rebuild the static site after editing `docs/` or `data/palettes.json`:
+
+```sh
+npm install
+npm run build:site   # docs + palettes -> dist/color/
+```
+
+To deploy (requires Cloudflare auth for the x-cmd account):
+
+```sh
+npm run deploy       # build + wrangler deploy (assets-only worker, routes x-cmd.com/color*)
+```
+
 ## Documentation
 
 | Topic | English | 中文 |

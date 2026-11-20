@@ -1,0 +1,15 @@
+{
+  "name": "color-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:site": "node scripts/build-site.mjs",
+    "check": "node scripts/palette.mjs check",
+    "dev": "npm run build:site && wrangler dev",
+    "deploy": "npm run build:site && wrangler deploy"
+  },
+  "devDependencies": {
+    "marked": "^15.0.0",
+    "wrangler": "^4.0.0"
+  }
+}

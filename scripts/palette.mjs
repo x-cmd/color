@@ -565,11 +565,17 @@ function cmdCheck() {
   if (errors.length) process.exit(1);
 }
 
-const cmd = process.argv[2];
-if (cmd === 'stats') cmdStats();
-else if (cmd === 'tables') cmdTables();
-else if (cmd === 'check') cmdCheck();
-else {
-  console.log('usage: node scripts/palette.mjs <stats|tables|check>');
-  process.exit(2);
+// 供 build-site.mjs 导入(不触发 CLI)
+export { families, ORDERS, ramp, renderBlock, pageFiles, readBody, headings };
+
+const invokedDirectly = process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+if (invokedDirectly) {
+  const cmd = process.argv[2];
+  if (cmd === 'stats') cmdStats();
+  else if (cmd === 'tables') cmdTables();
+  else if (cmd === 'check') cmdCheck();
+  else {
+    console.log('usage: node scripts/palette.mjs <stats|tables|check>');
+    process.exit(2);
+  }
 }

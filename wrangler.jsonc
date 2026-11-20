@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "color",
+  "account_id": "9b91040f4823535bef6af07dcc3f1e58",
+  "compatibility_date": "2026-11-01",
+  // assets-only worker:无 worker 代码,scripts/build-site.mjs 生成的静态站
+  // 直接按路径匹配(dist/color/** 对应 /color/**)。
+  // 路由与 x-cmd-hub/draw 同款:x-cmd.com/color* + 通配子域(cn/www)。
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "x-cmd.com/color*", "zone_name": "x-cmd.com" },
+    { "pattern": "*.x-cmd.com/color*", "zone_name": "x-cmd.com" }
+  ]
+}
