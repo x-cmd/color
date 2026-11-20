@@ -1512,6 +1512,33 @@
           },
           "hex": "#94A3B8",
           "role": "muted"
+        },
+        {
+          "id": "blue1",
+          "name": {
+            "en": "Shadcn Blue 1",
+            "cn": "Shadcn 蓝 1"
+          },
+          "hex": "#8EC6FF",
+          "role": "support"
+        },
+        {
+          "id": "blue5",
+          "name": {
+            "en": "Shadcn Blue 5",
+            "cn": "Shadcn 蓝 5"
+          },
+          "hex": "#0E3994",
+          "role": "support"
+        },
+        {
+          "id": "canvas-dark",
+          "name": {
+            "en": "Dark Canvas",
+            "cn": "深色画布"
+          },
+          "hex": "#0D1117",
+          "role": "support"
         }
       ],
       "type": {
