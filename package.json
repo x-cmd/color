@@ -6,7 +6,8 @@
     "build:site": "node scripts/build-site.mjs",
     "check": "node scripts/palette.mjs check",
     "dev": "npm run build:site && wrangler dev",
-    "deploy": "npm run build:site && wrangler deploy"
+    "deploy": "npm run build:site && wrangler deploy",
+    "deploy:po6": "npm run build:site && wrangler deploy -c wrangler.po6.jsonc"
   },
   "devDependencies": {
     "marked": "^15.0.0",

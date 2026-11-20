@@ -1,0 +1,17 @@
+// po6.sh 部署配置(个人账号):与 wrangler.jsonc 同一份 dist,挂 po6.sh/color*。
+// po6.sh 的 zone 在个人账号,与 x-cmd.com(x-cmd 账号)不是一个账号,一个 worker
+// 跨不了账号,所以拆两份配置分开部署:npm run deploy(主)/ npm run deploy:po6。
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "color-po6",
+  "account_id": "d8caf3f6df38f81423fd3ed39534f753",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "po6.sh/color*", "zone_name": "po6.sh" },
+    { "pattern": "*.po6.sh/color*", "zone_name": "po6.sh" }
+  ]
+}

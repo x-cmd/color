@@ -12,8 +12,6 @@
   },
   "routes": [
     { "pattern": "x-cmd.com/color*", "zone_name": "x-cmd.com" },
-    { "pattern": "*.x-cmd.com/color*", "zone_name": "x-cmd.com" },
-    { "pattern": "po6.sh/color*", "zone_name": "po6.sh" },
-    { "pattern": "*.po6.sh/color*", "zone_name": "po6.sh" }
+    { "pattern": "*.x-cmd.com/color*", "zone_name": "x-cmd.com" }
   ]
 }
