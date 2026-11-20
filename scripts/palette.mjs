@@ -16,6 +16,7 @@
 import { readFileSync, writeFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, dirname, resolve, relative, isAbsolute } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { renderWidget } from './widgets.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DATA_FILE = join(ROOT, 'data', 'palettes.json');
@@ -521,12 +522,13 @@ function renderSkinsBlock(lang) {
 
 /* ---------- 标记块读写 ---------- */
 
-const MARK_RE = /<!--\s*(palette|band|ramp|families|demo|series|anchors|anchor-cards|type-guide|skins):([a-z0-9-]+(?::[a-z0-9-]+)?)\s*-->([\s\S]*?)<!--\s*\/\1\s*-->/g;
+const MARK_RE = /<!--\s*(palette|band|ramp|families|demo|series|anchors|anchor-cards|type-guide|skins|widget):([a-z0-9-]+(?::[a-z0-9-]+)?)\s*-->([\s\S]*?)<!--\s*\/\1\s*-->/g;
 
 function renderBlock(kind, spec) {
   if (kind === 'families') return renderFamiliesBlock(spec);
   if (kind === 'type-guide') return renderTypeGuideBlock(spec.split(':')[1] || 'en');
   if (kind === 'skins') return renderSkinsBlock(spec.split(':')[1] || 'en');
+  if (kind === 'widget') { const [wname, wlang] = spec.split(':'); return renderWidget(wname, wlang || 'en', { families, schemes }); }
   const [family, lang] = spec.split(':');
   const f = registry[family];
   if (!f) throw new Error(`unknown family or scheme: ${family}`);
@@ -539,6 +541,7 @@ function renderBlock(kind, spec) {
   if (kind === 'anchor-cards') return renderAnchorCardsBlock(f, lang);
   if (kind === 'type-guide') return renderTypeGuideBlock(spec.split(':')[1] || 'en');
   if (kind === 'skins') return renderSkinsBlock(spec.split(':')[1] || 'en');
+  if (kind === 'widget') { const [wname, wlang] = spec.split(':'); return renderWidget(wname, wlang || 'en', { families, schemes }); }
   throw new Error(`unknown block: ${kind}`);
 }
 
