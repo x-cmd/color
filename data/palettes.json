@@ -1444,6 +1444,174 @@
           "cn": "一条粗基线、大量空气、直角;信号出现之前全是灰"
         }
       }
+    },
+    "tech-blue": {
+      "name": {
+        "en": "Tech Blue (status quo)",
+        "cn": "科技蓝（现状）"
+      },
+      "summary": {
+        "en": "The audit object: x-cmd/draw's current default family — shadcn's blue ramp plus Tailwind's 500-grade green/amber/violet and the dark-mode glow set. Competent, and exactly what every dev tool ships.",
+        "cn": "审计对象:x-cmd/draw 现行默认家族——shadcn 蓝阶加 Tailwind 500 档的绿/琥珀/紫,再加深底发光组。称职,但也正是每个开发者工具都在发的那套。"
+      },
+      "mood": {
+        "en": "Developer-tool default",
+        "cn": "开发者工具出厂态"
+      },
+      "bestFor": {
+        "en": "Dark-mode dashboards, product UIs",
+        "cn": "暗色看板、产品界面"
+      },
+      "avoidFor": {
+        "en": "Standing out on GitHub light READMEs — it is the crowd",
+        "cn": "在 GitHub 浅色 README 里脱颖而出——它就是人群本身"
+      },
+      "series": [
+        "#3B82F6",
+        "#10B981",
+        "#F59E0B",
+        "#8B5CF6",
+        "#22D3EE",
+        "#A78BFA",
+        "#F43F5E",
+        "#579DFF"
+      ],
+      "colors": [
+        {
+          "id": "paper",
+          "name": {
+            "en": "Paper",
+            "cn": "纸"
+          },
+          "hex": "#FFFFFF",
+          "role": "surface"
+        },
+        {
+          "id": "ink",
+          "name": {
+            "en": "Ink",
+            "cn": "墨"
+          },
+          "hex": "#0F172A",
+          "role": "ink"
+        },
+        {
+          "id": "grid",
+          "name": {
+            "en": "Grid",
+            "cn": "网格"
+          },
+          "hex": "#E2E8F0",
+          "role": "base"
+        },
+        {
+          "id": "muted",
+          "name": {
+            "en": "Muted",
+            "cn": "次要"
+          },
+          "hex": "#94A3B8",
+          "role": "muted"
+        }
+      ],
+      "type": {
+        "headingFont": "Inter, system-ui, sans-serif",
+        "bodyFont": "Inter, system-ui, sans-serif",
+        "numbers": "tabular",
+        "weight": "600",
+        "tracking": "-0.01em",
+        "spacing": "compact",
+        "radius": "8",
+        "grid": "hairline",
+        "note": {
+          "en": "shadcn/Tailwind house style — the industry's default suit",
+          "cn": "shadcn/Tailwind 房风——全行业的默认西装"
+        }
+      }
+    },
+    "primer": {
+      "name": {
+        "en": "Primer (GitHub-native)",
+        "cn": "Primer（GitHub 原生）"
+      },
+      "summary": {
+        "en": "Built from GitHub Primer's own functional accents — the colours github.com already uses for links, merges, issues and reviews. Charts wearing it read as native to the platform instead of fighting it. Mid-band lightness survives both the white and the #0D1117 README canvas.",
+        "cn": "用 GitHub Primer 自己的功能强调色搭成——就是 github.com 用于链接、合并、issue 和 review 的那组色。穿它的图表读起来是平台原生,而不是在跟平台打架。中段明度同时扛得住白底与 #0D1117 的 README 画布。"
+      },
+      "mood": {
+        "en": "Native, institutional, quiet",
+        "cn": "原生、机构、安静"
+      },
+      "bestFor": {
+        "en": "READMEs, issues, PRs, docs — anything embedded in github.com",
+        "cn": "README、issue、PR、文档——一切嵌在 github.com 里的东西"
+      },
+      "avoidFor": {
+        "en": "Off-GitHub brand surfaces — you are wearing someone else's house colours",
+        "cn": "GitHub 之外的品牌面——那是穿别人家的房色"
+      },
+      "series": [
+        "#0969DA",
+        "#1A7F37",
+        "#BC4C00",
+        "#8250DF",
+        "#CF222E",
+        "#BF3989",
+        "#1B7C83",
+        "#9A6700"
+      ],
+      "colors": [
+        {
+          "id": "paper",
+          "name": {
+            "en": "Canvas",
+            "cn": "画布"
+          },
+          "hex": "#FFFFFF",
+          "role": "surface"
+        },
+        {
+          "id": "ink",
+          "name": {
+            "en": "Ink",
+            "cn": "墨"
+          },
+          "hex": "#1F2328",
+          "role": "ink"
+        },
+        {
+          "id": "grid",
+          "name": {
+            "en": "Border",
+            "cn": "边线"
+          },
+          "hex": "#D0D7DE",
+          "role": "base"
+        },
+        {
+          "id": "muted",
+          "name": {
+            "en": "Muted",
+            "cn": "次要"
+          },
+          "hex": "#656D76",
+          "role": "muted"
+        }
+      ],
+      "type": {
+        "headingFont": "-apple-system, 'Segoe UI', sans-serif",
+        "bodyFont": "-apple-system, 'Segoe UI', sans-serif",
+        "numbers": "tabular",
+        "weight": "600",
+        "tracking": "0em",
+        "spacing": "normal",
+        "radius": "6",
+        "grid": "hairline",
+        "note": {
+          "en": "GitHub's own UI type and border tokens — the chart becomes part of the page",
+          "cn": "GitHub 自家 UI 的字体与边线 token——图表成为页面的一部分"
+        }
+      }
     }
   }
 }

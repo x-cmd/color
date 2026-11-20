@@ -68,6 +68,8 @@ x-json-ld:
 | Salmon | 'Financier Display', Georgia, serif | 'Metric', 'Segoe UI', sans-serif | tabular | 600 / 0em / normal | 2 | hairline |
 | Okabe-Ito | Arial, Helvetica, sans-serif | Arial, Helvetica, sans-serif | tabular | 400 / 0em / normal | 4 | hairline |
 | Mono Signal | 'Helvetica Neue', Helvetica, Arial | 'Helvetica Neue', Helvetica, Arial | tabular (mandatory) | 700 / 0em / airy | 0 | hairline |
+| Tech Blue (status quo) | Inter, system-ui, sans-serif | Inter, system-ui, sans-serif | tabular | 600 / -0.01em / compact | 8 | hairline |
+| Primer (GitHub-native) | -apple-system, 'Segoe UI', sans-serif | -apple-system, 'Segoe UI', sans-serif | tabular | 600 / 0em / normal | 6 | hairline |
 <!-- /type-guide -->
 
 按列读，不要按行读：**数字**一列没有值得一提的例外——数据数字要么等宽要么对不齐；

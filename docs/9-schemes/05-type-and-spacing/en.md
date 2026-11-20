@@ -72,6 +72,8 @@ substitute directly when you have them.
 | Salmon | 'Financier Display', Georgia, serif | 'Metric', 'Segoe UI', sans-serif | tabular | 600 / 0em / normal | 2 | hairline |
 | Okabe-Ito | Arial, Helvetica, sans-serif | Arial, Helvetica, sans-serif | tabular | 400 / 0em / normal | 4 | hairline |
 | Mono Signal | 'Helvetica Neue', Helvetica, Arial | 'Helvetica Neue', Helvetica, Arial | tabular (mandatory) | 700 / 0em / airy | 0 | hairline |
+| Tech Blue (status quo) | Inter, system-ui, sans-serif | Inter, system-ui, sans-serif | tabular | 600 / -0.01em / compact | 8 | hairline |
+| Primer (GitHub-native) | -apple-system, 'Segoe UI', sans-serif | -apple-system, 'Segoe UI', sans-serif | tabular | 600 / 0em / normal | 6 | hairline |
 <!-- /type-guide -->
 
 Read the table by column, not by row: the **Numbers** column is the only one with no exceptions

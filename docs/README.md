@@ -82,3 +82,14 @@ published.
 | [Palette](8-neon/02-neon-palette/en.md) | the two near-blacks, five accents, the ramp as glow |
 | [Versus macaron](8-neon/03-neon-vs-macaron/en.md) | the same sweetness read two ways — the ring closes |
 | [In practice](8-neon/04-neon-in-practice/en.md) | nightlife, gaming, developer tools, portfolios — and the accessibility bills |
+
+## 9 · Schemes 方案
+
+| page | what it covers |
+| --- | --- |
+| [Letterpress](9-schemes/01-scheme-letterpress/en.md) | the editorial UI scheme distilled from szum.io — and the copyright boundary |
+| [Phosphor Paper](9-schemes/02-scheme-phosphor/en.md) | the scheme proposed for draw, with its eight-colour chart series |
+| [Chart style schemes](9-schemes/03-chart-schemes/en.md) | four series palettes — broadsheet, salmon, okabe-ito, mono-signal — and the five decisions |
+| [Hue anchors](9-schemes/04-hue-anchors/en.md) | one style, every blood colour — structure × anchor, worn examples |
+| [Type and spacing](9-schemes/05-type-and-spacing/en.md) | the third axis — fonts, density, radius, grid for all thirteen styles |
+| [Charts on GitHub](9-schemes/06-github-charts/en.md) | status-quo audit of draw's palettes and the GitHub-native recommendation |
