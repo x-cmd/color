@@ -162,4 +162,5 @@ and picks the scheme — which is exactly what a draw SKILL should do.
 | --- | --- |
 | [Phosphor Paper](../02-scheme-phosphor/en.md) | the scheme proposed for draw, with its series |
 | [Letterpress](../01-scheme-letterpress/en.md) | where the editorial lineage comes from |
+| [Hue anchors](../04-hue-anchors/en.md) | one style, every anchor on the wheel — the parametric level |
 | [Reading a palette](../../1-overview/02-reading-a-palette/en.md) | audit any series palette in five steps |

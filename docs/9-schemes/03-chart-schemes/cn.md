@@ -151,4 +151,5 @@ draw 的 SKILL 该做的事。
 | --- | --- |
 | [磷光纸](../02-scheme-phosphor/cn.md) | 为 draw 提出的方案，含它的系列色 |
 | [印刷装帧](../01-scheme-letterpress/cn.md) | 编辑血统的出处 |
+| [色相锚](../04-hue-anchors/cn.md) | 一套风格停在色环任何位置 —— 参数化一级 |
 | [怎么读一套色板](../../1-overview/02-reading-a-palette/cn.md) | 五步审计任何系列色板 |

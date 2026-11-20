@@ -373,9 +373,39 @@ function renderSeriesBlock(scheme, lang) {
   return strip + '\n\n' + table;
 }
 
+
+// anchors 块:风格 x 色相锚 —— 系列色整体绕色环平移,结构与彩度纪律不动
+const ANCHORS = [
+  { deg: 30, en: 'red', cn: '红' },
+  { deg: 55, en: 'orange', cn: '橙' },
+  { deg: 85, en: 'gold', cn: '金' },
+  { deg: 150, en: 'green', cn: '绿' },
+  { deg: 200, en: 'cyan', cn: '青' },
+  { deg: 260, en: 'blue', cn: '蓝' },
+  { deg: 300, en: 'purple', cn: '紫' },
+];
+
+function renderAnchorsBlock(scheme, lang) {
+  const L = lang === 'cn';
+  const list = scheme.seriesData || [];
+  if (!list.length) throw new Error(`scheme has no series: ${scheme.key}`);
+  const base = list[0].oklch[2];
+  const rows = ANCHORS.map((a) => {
+    const cells = list.map((c) => {
+      const h = (c.oklch[2] + (a.deg - base) + 360) % 360;
+      const hex = rgbToHex(oklchToRgb(c.oklch[0], c.oklch[1], h));
+      return `<td style="background:${hex};height:26px" title="${hex}"></td>`;
+    }).join('');
+    const name = `<th style="text-align:left;font-weight:500;white-space:nowrap">${a.deg}° ${L ? a.cn : a.en}</th>`;
+    return `<tr>${name}${cells}</tr>`;
+  }).join('');
+  const head = L ? '锚(系列一落在)' : 'Anchor (series 1 lands on)';
+  return `<table style="border-collapse:collapse;max-width:600px">${'<colgroup>' + list.map(() => '<col style="width:44px">').join('') + '</colgroup>'}<tr><th style="text-align:left;font-size:12px;color:#6E6A66;font-weight:600">${head}</th>${list.map(() => '<th></th>').join('')}</tr>${rows}</table>`;
+}
+
 /* ---------- 标记块读写 ---------- */
 
-const MARK_RE = /<!--\s*(palette|band|ramp|families|demo|series):([a-z0-9-]+(?::[a-z0-9-]+)?)\s*-->([\s\S]*?)<!--\s*\/\1\s*-->/g;
+const MARK_RE = /<!--\s*(palette|band|ramp|families|demo|series|anchors):([a-z0-9-]+(?::[a-z0-9-]+)?)\s*-->([\s\S]*?)<!--\s*\/\1\s*-->/g;
 
 function renderBlock(kind, spec) {
   if (kind === 'families') return renderFamiliesBlock(spec);
@@ -387,6 +417,7 @@ function renderBlock(kind, spec) {
   if (kind === 'ramp') return renderRampBlock(f, lang);
   if (kind === 'demo') return renderDemoBlock(f, lang);
   if (kind === 'series') return renderSeriesBlock(f, lang);
+  if (kind === 'anchors') return renderAnchorsBlock(f, lang);
   throw new Error(`unknown block: ${kind}`);
 }
 
@@ -528,8 +559,9 @@ function cmdCheck() {
       if (!/^x-desc:\s*\S/m.test(fm)) warn(`${rel}/${lang}.md: missing x-desc`);
       if (!/^x-sidebar:\s*\S/m.test(fm)) warn(`${rel}/${lang}.md: missing x-sidebar`);
 
-      // 文中出现的色值必须来自调色板
-      const hexes = body.match(/#[0-9A-Fa-f]{6}\b/g) || [];
+      // 文中出现的色值必须来自调色板(生成块内部除外 —— 那是脚本算的,由块一致性把关)
+      const handWritten = body.replace(MARK_RE, '<!-- generated -->');
+      const hexes = handWritten.match(/#[0-9A-Fa-f]{6}\b/g) || [];
       for (const h of hexes) {
         const up = h.toUpperCase();
         if (!allowed.has(up)) err(`${rel}/${lang}.md: colour ${h} is not in data/palettes.json`);
