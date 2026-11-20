@@ -126,7 +126,21 @@
           "hex": "#8C7F84",
           "role": "muted"
         }
-      ]
+      ],
+      "type": {
+        "headingFont": "ui-rounded, 'SF Pro Rounded', Quicksand, system-ui",
+        "bodyFont": "ui-rounded, system-ui, sans-serif",
+        "numbers": "tabular",
+        "weight": "600",
+        "tracking": "0em",
+        "spacing": "airy",
+        "radius": "14",
+        "grid": "none",
+        "note": {
+          "en": "Rounded everything; generous padding; no gridlines — softness is the message",
+          "cn": "一切圆角;留白大方;不要网格线——软就是信息"
+        }
+      }
     },
     "morandi": {
       "name": {
@@ -254,7 +268,21 @@
           "hex": "#8A817A",
           "role": "muted"
         }
-      ]
+      ],
+      "type": {
+        "headingFont": "Georgia, 'Source Serif 4', serif",
+        "bodyFont": "'Avenir Next', 'Segoe UI', sans-serif",
+        "numbers": "tabular",
+        "weight": "400",
+        "tracking": "0.01em",
+        "spacing": "airy",
+        "radius": "6",
+        "grid": "hairline",
+        "note": {
+          "en": "Serif titles over quiet sans body; hairline rules only",
+          "cn": "衬线标题配安静的无衬线正文;只配发丝线"
+        }
+      }
     },
     "swiss-neutral": {
       "name": {
@@ -355,7 +383,21 @@
           "hex": "#000000",
           "role": "ink"
         }
-      ]
+      ],
+      "type": {
+        "headingFont": "'Helvetica Neue', Helvetica, Inter, Arial",
+        "bodyFont": "'Helvetica Neue', Helvetica, Inter, Arial",
+        "numbers": "tabular (mandatory)",
+        "weight": "700",
+        "tracking": "-0.01em",
+        "spacing": "normal",
+        "radius": "0",
+        "grid": "hairline",
+        "note": {
+          "en": "One family, one weight jump, 8pt grid, square corners; tabular figures everywhere",
+          "cn": "一族字体、一次字重跳跃、8pt 网格、直角;表格数字一律等宽"
+        }
+      }
     },
     "nordic": {
       "name": {
@@ -474,7 +516,21 @@
           "hex": "#2E3A40",
           "role": "ink"
         }
-      ]
+      ],
+      "type": {
+        "headingFont": "Inter, system-ui, sans-serif",
+        "bodyFont": "Inter, system-ui, sans-serif",
+        "numbers": "tabular",
+        "weight": "300",
+        "tracking": "0.02em",
+        "spacing": "airy",
+        "radius": "8",
+        "grid": "hairline",
+        "note": {
+          "en": "Light weights, wide leading, more whitespace than content",
+          "cn": "轻字重、宽行距、留白多于内容"
+        }
+      }
     },
     "wabi-sabi": {
       "name": {
@@ -575,7 +631,21 @@
           "hex": "#3B342E",
           "role": "ink"
         }
-      ]
+      ],
+      "type": {
+        "headingFont": "'Iowan Old Style', Palatino, Georgia, serif",
+        "bodyFont": "'Iowan Old Style', Palatino, Georgia, serif",
+        "numbers": "old-style (prose) / tabular (data)",
+        "weight": "400",
+        "tracking": "0em",
+        "spacing": "airy",
+        "radius": "2",
+        "grid": "none",
+        "note": {
+          "en": "Serif throughout, hand-cut corners, no mechanical grid",
+          "cn": "通篇衬线、手作般的近直角、不要机械网格"
+        }
+      }
     },
     "memphis": {
       "name": {
@@ -685,7 +755,21 @@
           "hex": "#1A1A1A",
           "role": "ink"
         }
-      ]
+      ],
+      "type": {
+        "headingFont": "'Archivo Black', 'Arial Black', system-ui",
+        "bodyFont": "Inter, system-ui, sans-serif",
+        "numbers": "tabular",
+        "weight": "900",
+        "tracking": "0em",
+        "spacing": "compact",
+        "radius": "mixed 0 / pill",
+        "grid": "dotted",
+        "note": {
+          "en": "Display weight up front, blocks tight, dot grids welcome",
+          "cn": "展示字重打头、色块排紧、点阵网格尽管上"
+        }
+      }
     },
     "neon": {
       "name": {
@@ -804,7 +888,21 @@
           "hex": "#8B98A5",
           "role": "muted"
         }
-      ]
+      ],
+      "type": {
+        "headingFont": "'JetBrains Mono', ui-monospace, monospace",
+        "bodyFont": "system-ui, sans-serif",
+        "numbers": "tabular mono",
+        "weight": "600",
+        "tracking": "0em",
+        "spacing": "compact",
+        "radius": "6",
+        "grid": "none",
+        "note": {
+          "en": "Mono for anything technical; glow replaces lines",
+          "cn": "技术内容一律等宽;发光替代线条"
+        }
+      }
     }
   },
   "schemes": {
@@ -884,7 +982,21 @@
           "hex": "#6B6B6B",
           "role": "muted"
         }
-      ]
+      ],
+      "type": {
+        "headingFont": "'Playfair Display', Georgia, serif",
+        "bodyFont": "Georgia, serif",
+        "numbers": "old-style (prose) / tabular (data)",
+        "weight": "700",
+        "tracking": "0em",
+        "spacing": "normal",
+        "radius": "2",
+        "grid": "hairline",
+        "note": {
+          "en": "Editorial serif pair, tight leading, near-square corners",
+          "cn": "编辑式衬线配对、行距偏紧、近直角"
+        }
+      }
     },
     "phosphor": {
       "name": {
@@ -981,7 +1093,21 @@
           "hex": "#5D6B66",
           "role": "muted"
         }
-      ]
+      ],
+      "type": {
+        "headingFont": "Inter, system-ui, sans-serif",
+        "bodyFont": "Inter, system-ui, sans-serif",
+        "numbers": "tabular",
+        "weight": "650",
+        "tracking": "-0.01em",
+        "spacing": "normal",
+        "radius": "8",
+        "grid": "hairline",
+        "note": {
+          "en": "Instrument: grotesque + tabular digits, 4pt base unit, cool hairlines",
+          "cn": "仪器:怪诞体+等宽数字,4pt 基准,冷调发丝线"
+        }
+      }
     },
     "broadsheet": {
       "name": {
@@ -1051,7 +1177,21 @@
           "hex": "#6E675C",
           "role": "muted"
         }
-      ]
+      ],
+      "type": {
+        "headingFont": "Georgia, 'Nimbus Roman', serif",
+        "bodyFont": "'Helvetica Neue', Arial, sans-serif",
+        "numbers": "tabular",
+        "weight": "700",
+        "tracking": "-0.005em",
+        "spacing": "compact",
+        "radius": "0",
+        "grid": "dotted",
+        "note": {
+          "en": "Serif headline, sans data labels, dotted rules — newsprint habit",
+          "cn": "衬线大标题、无衬线数据标签、点线规尺——新闻纸的习惯"
+        }
+      }
     },
     "salmon": {
       "name": {
@@ -1121,7 +1261,21 @@
           "hex": "#7A6E64",
           "role": "muted"
         }
-      ]
+      ],
+      "type": {
+        "headingFont": "'Financier Display', Georgia, serif",
+        "bodyFont": "'Metric', 'Segoe UI', sans-serif",
+        "numbers": "tabular",
+        "weight": "600",
+        "tracking": "0em",
+        "spacing": "normal",
+        "radius": "2",
+        "grid": "hairline",
+        "note": {
+          "en": "FT-style: serif authority, sans utility, pink-tinted hairlines",
+          "cn": "FT 式:衬线给权威、无衬线给功能、发丝线带粉调"
+        }
+      }
     },
     "okabe-ito": {
       "name": {
@@ -1191,7 +1345,21 @@
           "hex": "#767676",
           "role": "muted"
         }
-      ]
+      ],
+      "type": {
+        "headingFont": "Arial, Helvetica, sans-serif",
+        "bodyFont": "Arial, Helvetica, sans-serif",
+        "numbers": "tabular",
+        "weight": "400",
+        "tracking": "0em",
+        "spacing": "normal",
+        "radius": "4",
+        "grid": "hairline",
+        "note": {
+          "en": "Maximum plainness — the calibration must be the only feature",
+          "cn": "最大程度的平淡——校准必须是唯一的特征"
+        }
+      }
     },
     "mono-signal": {
       "name": {
@@ -1261,7 +1429,21 @@
           "hex": "#8A8A8A",
           "role": "muted"
         }
-      ]
+      ],
+      "type": {
+        "headingFont": "'Helvetica Neue', Helvetica, Arial",
+        "bodyFont": "'Helvetica Neue', Helvetica, Arial",
+        "numbers": "tabular (mandatory)",
+        "weight": "700",
+        "tracking": "0em",
+        "spacing": "airy",
+        "radius": "0",
+        "grid": "hairline",
+        "note": {
+          "en": "One strong baseline, generous air, square corners; grey until the signal",
+          "cn": "一条粗基线、大量空气、直角;信号出现之前全是灰"
+        }
+      }
     }
   }
 }

@@ -403,12 +403,130 @@ function renderAnchorsBlock(scheme, lang) {
   return `<table style="border-collapse:collapse;max-width:600px">${'<colgroup>' + list.map(() => '<col style="width:44px">').join('') + '</colgroup>'}<tr><th style="text-align:left;font-size:12px;color:#6E6A66;font-weight:600">${head}</th>${list.map(() => '<th></th>').join('')}</tr>${rows}</table>`;
 }
 
+
+// anchor-cards 块:每个锚点渲染一张实例卡 —— 同一套界面(按钮+8系列条图)穿转动后的颜色
+function renderAnchorCardsBlock(scheme, lang) {
+  const L = lang === 'cn';
+  const series = scheme.seriesData || scheme.colors.filter((c) => c.role === 'base' || c.role === 'accent');
+  if (!series.length) throw new Error(`scheme has no series: ${scheme.key}`);
+  const byRole = (role) => scheme.colors.find((c) => c.role === role);
+  const surfaceC = byRole('surface') || scheme.colors[0];
+  const inkC = byRole('ink') || scheme.colors[scheme.colors.length - 1];
+  const mutedC = byRole('muted') || inkC;
+  const accentC = byRole('accent') || series[0];
+  const base = series[0].oklch[2];
+  const rot = (c, d) => rgbToHex(oklchToRgb(c.oklch[0], c.oklch[1], (c.oklch[2] + d + 360) % 360));
+  // 旋转后的底色/墨色几乎无彩,转动看不出 —— 但为了概念干净,一并转
+  const heights = [64, 40, 54, 32, 48, 26, 44, 58];
+  const labels = L
+    ? { primary: '主要操作', secondary: '次要操作' }
+    : { primary: 'Primary', secondary: 'Secondary' };
+  const cards = ANCHORS.map((a) => {
+    const d = a.deg - base;
+    const acc = rot(accentC, d);
+    const sf = rot(surfaceC, d);
+    const ink = rot(inkC, d);
+    const muted = rot(mutedC, d);
+    const border = rot({ ...surfaceC, oklch: [surfaceC.oklch[0] - 0.12, surfaceC.oklch[1], surfaceC.oklch[2]] }, d);
+    const accText = relativeLuminance(hexToRgb(acc)) > 0.35 ? '#000000' : '#FFFFFF';
+    const bars = series.slice(0, 8).map((c, i) =>
+      `<div style="flex:1;max-width:46px;height:${heights[i % 8]}px;border-radius:4px 4px 0 0;background:${rot(c, d)}"></div>`).join('');
+    return [
+      `<div style="border:1px solid ${border};border-radius:12px;overflow:hidden;max-width:640px;${FONT};margin:14px 0;box-shadow:0 1px 3px rgb(0 0 0 / 6%)">`,
+      `  <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:${sf};border-bottom:1px solid ${border}">`,
+      `    <strong style="color:${ink};font-size:13px">${scheme.name[lang]} · ${a.deg}° ${L ? a.cn : a.en}</strong>`,
+      `    <code style="color:${muted};font-size:12px">${rot(series[0], d)}</code>`,
+      `  </div>`,
+      `  <div style="padding:14px 16px;background:${sf}">`,
+      `    <div style="display:flex;gap:8px;margin-bottom:12px">`,
+      `      <span style="display:inline-block;padding:6px 14px;border-radius:8px;background:${acc};color:${accText};font-size:12.5px;font-weight:600">${labels.primary}</span>`,
+      `      <span style="display:inline-block;padding:6px 14px;border-radius:8px;border:1px solid ${ink};color:${ink};font-size:12.5px">${labels.secondary}</span>`,
+      `    </div>`,
+      `    <div style="display:flex;gap:8px;align-items:flex-end;border-bottom:1px solid ${muted};padding:4px 2px 0;height:68px">${bars}</div>`,
+      `  </div>`,
+      `</div>`,
+    ].join('\n');
+  }).join('\n');
+  return cards;
+}
+
+
+// type-guide 块:字体与间距总表(families + schemes 两张表)
+function typeRow(entry, lang) {
+  const t = entry.type;
+  const L = lang === 'cn';
+  const cols = [
+    entry.name[lang],
+    t.headingFont,
+    t.bodyFont,
+    t.numbers,
+    `${t.weight} / ${t.tracking} / ${t.spacing}`,
+    t.radius,
+    t.grid,
+  ];
+  return `| ${cols.join(' | ')} |`;
+}
+function typeTable(entries, lang) {
+  const L = lang === 'cn';
+  const head = L
+    ? ['风格', '标题字', '正文字', '数字', '字重 / 字距 / 密度', '圆角', '网格']
+    : ['Style', 'Headings', 'Body', 'Numbers', 'Weight / tracking / density', 'Radius', 'Grid'];
+  return [
+    `| ${head.join(' | ')} |`,
+    `| ${head.map(() => '---').join(' | ')} |`,
+    ...entries.map((e) => typeRow(e, lang)),
+  ].join('\n');
+}
+function renderTypeGuideBlock(lang) {
+  const L = lang === 'cn';
+  const famTable = typeTable(ORDERS.map((k) => families[k]), lang);
+  const schTable = typeTable(Object.keys(schemes).map((k) => schemes[k]), lang);
+  const h1 = L ? '### 七个风格家族' : '### The seven families';
+  const h2 = L ? '### 六套方案' : '### The six schemes';
+  return `${h1}\n\n${famTable}\n\n${h2}\n\n${schTable}`;
+}
+
+// skins 块:同一张迷你图穿七个家族的"皮肤"(字体/字重/密度/圆角/网格)
+const SKIN_SPACE = { compact: '10px 14px', normal: '14px 18px', airy: '20px 24px' };
+function renderSkinsBlock(lang) {
+  const L = lang === 'cn';
+  return ORDERS.map((key) => {
+    const f = families[key];
+    const t = f.type;
+    const byRole = (r) => f.colors.find((c) => c.role === r);
+    const sf = byRole('surface') || f.colors[0];
+    const ink = byRole('ink') || f.colors[f.colors.length - 1];
+    const muted = byRole('muted') || ink;
+    const mains = f.colors.filter((c) => c.role === 'base' || c.role === 'accent');
+    const barR = t.radius === 'mixed 0 / pill' ? '999px' : `${t.radius}px 0 0 0`.replace(' 0 0 0', 'px');
+    const gridStyle = t.grid === 'none' ? 'none' : (t.grid === 'dotted' ? '2px dotted' : '1px solid');
+    const heights = [58, 36, 47, 28];
+    const bars = mains.slice(0, 4).map((c, i) =>
+      `<div style="flex:1;max-width:46px;height:${heights[i % 4]}px;background:${c.hex};${t.grid === 'none' ? '' : ''}border-radius:${t.radius === 'mixed 0 / pill' ? '999px 999px 0 0' : (t.radius === '0' ? '0' : t.radius + 'px ' + t.radius + 'px 0 0')}"></div>`).join('');
+    const title = L ? '各区域季度增长' : 'Quarterly growth by area';
+    const sub = L ? '同比 %,四舍五入' : 'YoY %, rounded';
+    return [
+      `<div style="border:1px solid ${muted.hex}33;border-radius:${t.radius === 'mixed 0 / pill' ? '0' : t.radius}px;overflow:hidden;max-width:620px;${FONT};margin:14px 0;box-shadow:0 1px 3px rgb(0 0 0 / 5%)">`,
+      `  <div style="padding:${SKIN_SPACE[t.spacing] || '14px 18px'};background:${sf.hex}">`,
+      `    <div style="font-family:${t.headingFont};font-weight:${t.weight.startsWith('3') ? '300' : t.weight};letter-spacing:${t.tracking};color:${ink.hex};font-size:16px;margin-bottom:2px">${title}</div>`,
+      `    <div style="font-family:${t.bodyFont};color:${muted.hex};font-size:11.5px;font-variant-numeric:${t.numbers.includes('tabular') ? 'tabular-nums' : 'normal'};margin-bottom:14px">${sub}</div>`,
+      `    <div style="display:flex;gap:10px;align-items:flex-end;height:60px;${t.grid === 'none' ? '' : `border-bottom:${gridStyle} ${muted.hex};`}padding:4px 2px 0">${bars}</div>`,
+      `    <div style="margin-top:8px;font-family:${t.bodyFont};font-size:10.5px;color:${muted.hex};display:flex;justify-content:space-between"><span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span></div>`,
+      `    <div style="margin-top:10px;font-size:10.5px;color:${muted.hex}">${f.name[lang]} — ${t.note[lang]}</div>`,
+      `  </div>`,
+      `</div>`,
+    ].join('\n');
+  }).join('\n');
+}
+
 /* ---------- 标记块读写 ---------- */
 
-const MARK_RE = /<!--\s*(palette|band|ramp|families|demo|series|anchors):([a-z0-9-]+(?::[a-z0-9-]+)?)\s*-->([\s\S]*?)<!--\s*\/\1\s*-->/g;
+const MARK_RE = /<!--\s*(palette|band|ramp|families|demo|series|anchors|anchor-cards|type-guide|skins):([a-z0-9-]+(?::[a-z0-9-]+)?)\s*-->([\s\S]*?)<!--\s*\/\1\s*-->/g;
 
 function renderBlock(kind, spec) {
   if (kind === 'families') return renderFamiliesBlock(spec);
+  if (kind === 'type-guide') return renderTypeGuideBlock(spec.split(':')[1] || 'en');
+  if (kind === 'skins') return renderSkinsBlock(spec.split(':')[1] || 'en');
   const [family, lang] = spec.split(':');
   const f = registry[family];
   if (!f) throw new Error(`unknown family or scheme: ${family}`);
@@ -418,6 +536,9 @@ function renderBlock(kind, spec) {
   if (kind === 'demo') return renderDemoBlock(f, lang);
   if (kind === 'series') return renderSeriesBlock(f, lang);
   if (kind === 'anchors') return renderAnchorsBlock(f, lang);
+  if (kind === 'anchor-cards') return renderAnchorCardsBlock(f, lang);
+  if (kind === 'type-guide') return renderTypeGuideBlock(spec.split(':')[1] || 'en');
+  if (kind === 'skins') return renderSkinsBlock(spec.split(':')[1] || 'en');
   throw new Error(`unknown block: ${kind}`);
 }
 
