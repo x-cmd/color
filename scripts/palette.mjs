@@ -165,6 +165,15 @@ for (const key of Object.keys(families)) {
   families[key].colors = families[key].colors.map(analyze);
 }
 
+// 品牌方案(9-schemes):结构同 families,另有 series 图表系列色
+const schemes = raw.schemes || {};
+for (const key of Object.keys(schemes)) {
+  schemes[key].key = key;
+  schemes[key].colors = schemes[key].colors.map(analyze);
+  if (schemes[key].series) schemes[key].seriesData = schemes[key].series.map((hex) => analyze({ hex }));
+}
+const registry = { ...families, ...schemes };
+
 // 派生色阶：以 OKLCH 明度为轴做等距阶梯，色相与彩度保持不变
 function ramp(color) {
   const [L, C, h] = color.oklch;
@@ -342,18 +351,42 @@ function renderFamiliesBlock(lang) {
   ].join('\n');
 }
 
+// series 块:图表方案系列色 —— 条图 + 数值表
+function renderSeriesBlock(scheme, lang) {
+  const L = lang === 'cn';
+  const list = scheme.seriesData || [];
+  const heights = [72, 44, 58, 32, 50, 26, 40, 62];
+  const bars = list.map((c, i) =>
+    `<div style="flex:1;max-width:52px;height:${heights[i % heights.length]}px;border-radius:4px 4px 0 0;background:${c.hex}"></div>`).join('');
+  const strip = `<div style="display:flex;gap:8px;align-items:flex-end;border-bottom:1px solid #8A8A8A;padding:6px 2px 0;height:84px;max-width:560px">${bars}</div>`;
+  const head = L ? ['色块', '色值', 'HSL', 'OKLCH', '对黑字', '对白字'] : ['Swatch', 'Hex', 'HSL', 'OKLCH', 'Black text', 'White text'];
+  const rows = list.map((c) => {
+    const hsl = `${Math.round(c.hsl[0])}° ${pct(c.hsl[1])} ${pct(c.hsl[2])}`;
+    const ok = `${num(c.oklch[0])} ${num(c.oklch[1])} ${Math.round(c.oklch[2])}°`;
+    return `| ${swatch(c.hex)} | \`${c.hex}\` | ${hsl} | ${ok} | ${num(c.vsBlack)} (${wcagLevel(c.vsBlack)}) | ${num(c.vsWhite)} (${wcagLevel(c.vsWhite)}) |`;
+  });
+  const table = [
+    `| ${head[0]} | ${head[1]} | ${head[2]} | ${head[3]} | ${head[4]} | ${head[5]} |`,
+    '| --- | --- | --- | --- | --- | --- |',
+    ...rows,
+  ].join('\n');
+  return strip + '\n\n' + table;
+}
+
 /* ---------- 标记块读写 ---------- */
 
-const MARK_RE = /<!--\s*(palette|band|ramp|families|demo):([a-z0-9-]+(?::[a-z0-9-]+)?)\s*-->([\s\S]*?)<!--\s*\/\1\s*-->/g;
+const MARK_RE = /<!--\s*(palette|band|ramp|families|demo|series):([a-z0-9-]+(?::[a-z0-9-]+)?)\s*-->([\s\S]*?)<!--\s*\/\1\s*-->/g;
 
 function renderBlock(kind, spec) {
   if (kind === 'families') return renderFamiliesBlock(spec);
   const [family, lang] = spec.split(':');
-  if (!families[family]) throw new Error(`unknown family: ${family}`);
-  if (kind === 'band') return renderBandBlock(families[family], lang);
-  if (kind === 'palette') return renderPaletteBlock(families[family], lang);
-  if (kind === 'ramp') return renderRampBlock(families[family], lang);
-  if (kind === 'demo') return renderDemoBlock(families[family], lang);
+  const f = registry[family];
+  if (!f) throw new Error(`unknown family or scheme: ${family}`);
+  if (kind === 'band') return renderBandBlock(f, lang);
+  if (kind === 'palette') return renderPaletteBlock(f, lang);
+  if (kind === 'ramp') return renderRampBlock(f, lang);
+  if (kind === 'demo') return renderDemoBlock(f, lang);
+  if (kind === 'series') return renderSeriesBlock(f, lang);
   throw new Error(`unknown block: ${kind}`);
 }
 
@@ -464,14 +497,15 @@ function cmdCheck() {
 
   // 允许出现的色值：调色板本身 + 派生的色阶
   const allowed = new Set();
-  for (const key of Object.keys(families)) {
-    for (const c of families[key].colors) {
+  for (const key of Object.keys(registry)) {
+    for (const c of registry[key].colors) {
       allowed.add(c.hex);
       for (const s of ramp(c)) allowed.add(s);
+    }
+    for (const c of registry[key].series || []) allowed.add(c);
+  }
   allowed.add('#FFFFFF');
   allowed.add('#000000');
-    }
-  }
 
   for (const page of pages) {
     const rel = relative(DOCS_DIR, page.dir);
@@ -566,7 +600,7 @@ function cmdCheck() {
 }
 
 // 供 build-site.mjs 导入(不触发 CLI)
-export { families, ORDERS, ramp, renderBlock, pageFiles, readBody, headings };
+export { families, schemes, registry, ORDERS, ramp, renderBlock, pageFiles, readBody, headings };
 
 const invokedDirectly = process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 if (invokedDirectly) {

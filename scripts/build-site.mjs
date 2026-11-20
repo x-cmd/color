@@ -108,6 +108,28 @@ function shell({ title, desc, body, page, lang, extraHead = '' }) {
   const otherHref = page
     ? `/color/${other === 'cn' ? 'cn/' : ''}${page.slug}/`
     : (other === 'cn' ? '/color/cn/' : '/color/');
+  // 切语言:记住语言 + 记住滚动位置(新页恢复,不跳顶)
+  const toggleClick = `try{localStorage.setItem('color-lang','${other}');sessionStorage.setItem('color-pos',String(scrollY))}catch(e){}`;
+  const bootScript = `<script>
+(function(){
+  try {
+    if (matchMedia('(max-width:860px)').matches)
+      document.querySelectorAll('details.navbox').forEach(function(d){ d.open = false });
+    var EN = '/color/', CN = '/color/cn/', path = location.pathname;
+    var cur = path.indexOf(CN) === 0 ? 'cn' : 'en';
+    var saved = localStorage.getItem('color-lang');
+    if (saved && saved !== cur) {
+      var target = saved === 'cn' ? CN + path.slice(EN.length) : EN + path.slice(CN.length);
+      if (target !== path) {
+        var x = new XMLHttpRequest(); x.open('HEAD', target, false); x.send();
+        if (x.status === 200) { location.replace(target); return; }
+      }
+    }
+    var p = sessionStorage.getItem('color-pos');
+    if (p !== null) { sessionStorage.removeItem('color-pos'); scrollTo(0, +p); }
+  } catch (e) {}
+})();
+</script>`;
   return `<!doctype html>
 <html lang="${lang === 'cn' ? 'zh-CN' : 'en'}">
 <head>
@@ -121,12 +143,16 @@ ${extraHead}
 <body>
 <header>
   <a class="brand" href="/color/${lang === 'cn' ? 'cn/' : ''}"><span class="dot"></span>${SITE_TITLES[lang]}</a>
-  <span class="switch"><a href="${otherHref}" lang="${other}">${other === 'cn' ? '中文' : 'EN'}</a></span>
+  <span class="switch"><a href="${otherHref}" lang="${other}" onclick="${toggleClick}">${other === 'cn' ? '中文' : 'EN'}</a></span>
 </header>
 <div class="wrap">
+<details class="navbox" open>
+<summary>${zh ? '目录' : 'Contents'}</summary>
 ${nav(page, lang)}
+</details>
 <main>${body}</main>
 </div>
+${bootScript}
 </body>
 </html>`;
 }
